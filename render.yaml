@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: agentsql
+    env: python
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate
+    startCommand: gunicorn data_agent_ai.wsgi
+    envVars:
+      - key: DJANGO_DEBUG
+        value: "False"
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: ALLOW_PRIVATE_DB_HOSTS
+        value: "False"
+      - key: DAILY_QUESTION_LIMIT
+        value: "50"
+    disk:
+      name: data-storage
+      mountPath: /var/data
+      sizeGB: 5

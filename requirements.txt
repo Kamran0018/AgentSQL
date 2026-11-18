@@ -1,0 +1,14 @@
+django
+langchain-groq
+langchain-core
+langgraph
+python-dotenv
+sqlalchemy
+sqlglot
+pandas
+openpyxl
+cryptography
+psycopg2-binary
+pymysql
+gunicorn
+whitenoise
